@@ -1,0 +1,15 @@
+{
+  "name": "music_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DynamoYT",
+  "license": "ISC",
+  "dependencies": {
+    "erela.js": "^2.3.2",
+    "eris": "^0.14.0"
+  }
+}
