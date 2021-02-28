@@ -1,1 +1,1 @@
-# Eris_Music_bot_Lavalink
+# Example Music Bot
