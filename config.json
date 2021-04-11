@@ -1,3 +1,13 @@
 {
-    "token": "REPLACE WITH YOUR BOT TOKEN"
+    "token": "REPLACE WITH YOUR BOT TOKEN",
+    "prefix": "",
+    "spotify": {
+        "clientID": "",
+        "clientSecret": ""
+    },
+    "lavalink": {
+        "host": "",
+        "port": "",
+        "password": ""
+    }
 }
