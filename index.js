@@ -2,25 +2,24 @@ const config = require("./config.json");
 const Eris = require('eris');
 const Erelajs = require("erela.js");
 const Lavasfy = require("lavasfy");
-const { TrackUtils } = require("erela.js");
 const bot = new Eris(config.token);
 const lavasfy = new Lavasfy.LavasfyClient({
-    clientID: "",
-    clientSecret: ""
+    clientID: config.spotify.clientID,
+    clientSecret: config.spotify.clientSecret
 }, [
     {
         id: "main",
-        host: "localhost",
-        port: 4321,
-        password: "youshallnotpass"
+        host: config.lavalink.host,
+        port: parseInt(config.lavalink.port),
+        password: config.lavalink.password
     }
 ])
 const Manager = new Erelajs.Manager({
     nodes: [
         {
-            host: "localhost",
-            port: 4321,
-            password: "youshallnotpass"
+             host: config.lavalink.host,
+             port: parseInt(config.lavalink.port),
+             password: config.lavalink.password
         }
     ],
     send(id, payload) {
@@ -81,14 +80,14 @@ bot.on("messageCreate", async (message) => {
                 let allSongs = [];
                 for (let index = 0; index < res.tracks.length; index++) {
                     const element = res.tracks[index];
-                    allSongs.push(TrackUtils.build(element, message.author));
+                    allSongs.push(Erelajs.TrackUtils.build(element, message.author));
                 }
                 player.queue.add(allSongs);
                 if (!player.playing || !player.paused || player.queue.totalSize === allSongs.length) {
                     player.play()
                 }
             } else {
-                player.queue.add(TrackUtils.build(res.tracks[0], message.author));
+                player.queue.add(Erelajs.TrackUtils.build(res.tracks[0], message.author));
                 if (!player.playing || !player.paused || player.queue.size) {
                     player.play()
                 }
