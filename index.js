@@ -83,12 +83,12 @@ bot.on("messageCreate", async (message) => {
                     allSongs.push(Erelajs.TrackUtils.build(element, message.author));
                 }
                 player.queue.add(allSongs);
-                if (!player.playing || !player.paused || player.queue.totalSize === allSongs.length) {
+                if (!player.playing && !player.paused && player.queue.totalSize === allSongs.length) {
                     player.play()
                 }
             } else {
                 player.queue.add(Erelajs.TrackUtils.build(res.tracks[0], message.author));
-                if (!player.playing || !player.paused || player.queue.size) {
+                if (!player.playing && !player.paused && player.queue.size) {
                     player.play()
                 }
             }
@@ -100,12 +100,12 @@ bot.on("messageCreate", async (message) => {
                 return bot.createMessage(message.channel.id, `No Match found!`)
             } else if (res.loadType == 'PLAYLIST_LOADED') {
                 player.queue.add(res.tracks);
-                if (!player.playing || !player.paused || player.queue.totalSize === res.tracks.length) {
+                if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) {
                     player.play()
                 }
             } else {
                 player.queue.add(res.tracks[0]);
-                if (!player.playing || !player.paused || player.queue.size) {
+                if (!player.playing && !player.paused && player.queue.size) {
                     player.play()
                 }
             }
