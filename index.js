@@ -105,7 +105,7 @@ bot.on("messageCreate", async (message) => {
                 }
             } else {
                 player.queue.add(res.tracks[0]);
-                if (!player.playing && !player.paused && player.queue.size) {
+                if (!player.playing && !player.paused && !player.queue.size) {
                     player.play()
                 }
             }
